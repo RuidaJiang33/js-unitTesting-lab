@@ -28,5 +28,18 @@ class Catalogue {
     return matches;
   }
 
-}
+  removeProductById(id){
+    const originalLength = this.products.length;
+    this.products = this.products.filter((product) => {
+        return id !== product.id;
+      })
+
+      if (this.products.length < originalLength) {
+        return true; // found and removed
+      } else{
+        return false; // not found
+      } 
+    }
+  }
+
 module.exports = Catalogue;
