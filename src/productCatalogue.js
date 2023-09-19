@@ -35,11 +35,23 @@ class Catalogue {
       })
 
       if (this.products.length < originalLength) {
-        return true; // found and removed
+        return true;
       } else{
-        return false; // not found
+        return false; 
       } 
     }
+
+    checkReorder(){
+      const reorderProducts = this.products.filter((product) => {
+        return product.quantityInStock <= product.reorderLevel;
+      })
+      const productIds = reorderProducts.map((product) => product.id);
+      return {
+        type: "Reorder",
+        productIds: productIds
+      };
+    } 
+
   }
 
 module.exports = Catalogue;

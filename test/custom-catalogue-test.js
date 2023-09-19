@@ -68,7 +68,7 @@ if (matches.length === 0)
 else
   console.log('\tFailed')
 
-  //================================
+//================================
 
 cat = new Catalogue("Test Catalogue");
 console.log('Test removeProductById')
@@ -96,3 +96,33 @@ if (removeResponse === false)
   console.log('\tPassed')
 else
   console.log('\tfailed')
+
+//================================
+
+cat = new Catalogue("Test Catalogue");
+console.log('Test checkReorder')
+
+cat.addProduct(p123);
+cat.addProduct(p124);
+cat.addProduct(p125);
+cat.addProduct(p126);
+cat.addProduct(p127);
+cat.addProduct(p128);
+console.log('\tWhen nothing needs reordering, then the array will be empty.')
+console.log('\tcheckReorder: ' + JSON.stringify(cat.checkReorder()));
+
+const p129 = new Product("A123", "Product 1", 9, 10, 10.0);
+const p130 = new Product("A124", "Widget 1", 11, 10, 10.0);
+const p131 = new Product("A125", "A Product 2", 10, 10, 10.0);
+const p132 = new Product("A126", "A Widget 2", 8, 10, 10.0);
+const p133 = new Product("A127", "Bracket 1", 12, 10, 10.0)
+const p134 = new Product("A128", "Another Product 3", 5, 10, 10.0);
+cat = new Catalogue("Test Catalogue");
+cat.addProduct(p129);
+cat.addProduct(p130);
+cat.addProduct(p131);
+cat.addProduct(p132);
+cat.addProduct(p133);
+cat.addProduct(p134);
+console.log('\tThe productIds array contains the ids of the products that need reordering')
+console.log('\tcheckReorder: ' + JSON.stringify(cat.checkReorder()));
